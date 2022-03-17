@@ -4,9 +4,11 @@ Jinja2 Documentation:    https://jinja.palletsprojects.com/
 Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file creates your application.
 """
-
+import os
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for
+from app.forms import AddProperty
+from werkzeug.utils import secure_filename
 
 
 ###
@@ -22,7 +24,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', name="Tia-Jay Davis")
 
 
 ###
@@ -44,6 +46,31 @@ def send_text_file(file_name):
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
 
+@app.route('/properties/create', methods =['GET', 'POST'])
+def addproperty():
+    formobject =  AddProperty()
+    if request.method == 'GET':
+        return render_template('addproperty.html', formobj = formobject)
+    if request.method == 'POST':
+        if formobject.validate_on_submit(): 
+            fileobj = request.files['photo']
+            newname = secure_filename(fileobj.filename)
+            if fileobj and newname != "" :
+                fileobj.save(os.path.join(app.config['UPLOAD_FOLDER'][1:], newname))
+                #print(os.path.join(app.config['UPLOAD_FOLDER'], newname))
+                print(app.config['UPLOAD_FOLDER']+ '\\'+ newname)
+                print(newname)
+                flash('Property Successfully Added', 'success')
+                return redirect(url_for('displayproperties'))
+    return render_template('addproperty.html', formobj = formobject)
+
+@app.route('/properties')
+def displayproperties():
+    return render_template('base.html')
+
+@app.route('/properties/<propertyid>')
+def displayproperty():
+    return render_template('base.html')
 
 @app.after_request
 def add_header(response):

@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">My App</a>
+    <img id="projectlogo" src = "{{url_for('static', filename = 'images/home icon.png')}}"/>
+    <a class="navbar-brand" href="{{url_for('home')}}"> Project 1</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,6 +13,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('about') }}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('addproperty') }}">New Property</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('displayproperties') }}">Properties</a>
         </li>
       </ul>
     </div>
