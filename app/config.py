@@ -8,6 +8,6 @@ class Config(object):
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY', 'Som3$ec5etK*y')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace('postgres://', 'postgresql://')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False # This is just here to suppress a warning from SQLAlchemy as it will soon be removed
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = os.environ.get("UPLOAD_FOLDER")
     SAFE_FORMATS = ['jpg', 'png', 'jpeg']

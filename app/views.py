@@ -6,11 +6,12 @@ This file creates your application.
 """
 import os
 from app import app
-from flask import flash, render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, send_from_directory, url_for
 from app.forms import AddProperty
 from werkzeug.utils import secure_filename
-
-
+from app.models import Property
+import locale
+locale.setlocale( locale.LC_ALL, 'en_CA.UTF-8' )
 ###
 # Routing for your application.
 ###
@@ -40,6 +41,10 @@ def flash_errors(form):
                 error
             ), 'danger')
 
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
     """Send your static text file."""
@@ -66,11 +71,25 @@ def addproperty():
 
 @app.route('/properties')
 def displayproperties():
-    return render_template('base.html')
-
+    if request.method == 'GET':
+        propertylst = Property.query.all()
+        return render_template('properties.html', proplst = propertylst, local = locale)
+    
 @app.route('/properties/<propertyid>')
-def displayproperty():
-    return render_template('base.html')
+def displayproperty(propertyid):
+    newproperty = Property.query.filter(Property.id==propertyid).all()[0]
+    
+    if newproperty.numberofrooms > 1:
+        bedroomlabel = 'Bedrooms'
+    else:
+        bedroomlabel = 'Bedroom'
+
+    if newproperty.numberofbathrooms > 1:
+        bathroomlabel ='Bathrooms'
+    else:
+        bathroomlabel ='Bathroom'
+    
+    return render_template('property.html', singleproperty = newproperty, bathlabel = bathroomlabel, bedlabel = bedroomlabel, loc=locale)
 
 @app.after_request
 def add_header(response):
