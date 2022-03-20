@@ -3,16 +3,15 @@
 <link rel="stylesheet" href="{{url_for('static', filename='css/app.css')}}" />
 {% endblock %}
 
-{% block main %}
+ {% block main %}
 <h2>Properties </h2>
-{% include 'flashmessage.html' %}
-<section id="propertyset">
-    {% for property in propertylst: %}
+<section id="propertyset"> 
+    {% for property in proplst: %}
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src='{{ url_for("get_image", filename=property.photo)}}' alt="Property image"/>
-        <div class="card-body">
+        <div class="card-body"> 
           <h5 class="card-title">{{property.propertytitle}}</h5>
-         <span><img class="img" src="{{url_for('static', filename='images/location.png')}}"/> {{property.location}} </span>
+         <span><img class="locationimg" src="{{url_for('static', filename='images/location.png')}}"/> {{property.location}} </span>
          <span class="price"> {{local.currency(property.price, grouping= True)}} </span>
         </div>
         <a href="{{url_for('displayproperty', propertyid = property.id)}}" class="cardbtn"> View Property </a>
@@ -20,4 +19,4 @@
     {% endfor %}
 </section>
 
-{% endblock %}
+ {% endblock %}

@@ -5,7 +5,7 @@ Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file creates your application.
 """
 import os
-from app import app
+from app import app, db
 from flask import flash, render_template, request, redirect, send_from_directory, url_for
 from app.forms import AddProperty
 from werkzeug.utils import secure_filename
@@ -61,6 +61,9 @@ def addproperty():
             fileobj = request.files['photo']
             newname = secure_filename(fileobj.filename)
             if fileobj and newname != "" :
+                newproperty = Property(request.form['propertytitle'],request.form['numberofrooms'], request.form['numberofbathrooms'], request.form['location'], request.form['price'], request.form['description'], request.form['Type'], newname)
+                db.session.add(newproperty)
+                db.session.commit()
                 fileobj.save(os.path.join(app.config['UPLOAD_FOLDER'][1:], newname))
                 #print(os.path.join(app.config['UPLOAD_FOLDER'], newname))
                 print(app.config['UPLOAD_FOLDER']+ '\\'+ newname)
