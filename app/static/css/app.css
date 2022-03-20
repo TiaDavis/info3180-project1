@@ -1,3 +1,146 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    padding-top: 6rem;
+    background: #F3F4F6;
+}
+form{
+    background: #fff;
+    padding: 3em;
+}
+.form-group{
+    margin-bottom: 2rem;
+}
+
+form input.fileinput{
+    border: none;
+}
+
+img#projectlogo{
+    width: 1em;
+    margin-right: .5em;
+}
+section#propertyset{
+    display: grid;
+    grid-template-columns : repeat(3, 1fr);
+    grid-row-gap: 1.5em;
+    margin: 0 auto;
+}
+
+div.card{
+    width: 24rem !important;
+}
+
+div.card-body{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+div img.card-img-top{
+    height:20rem;
+    object-fit: cover;
+}
+
+span img.locationimg, span img.bedimg, span img.bathimg{
+    width: 1.7em;
+}
+
+span.bedspan, span.bathspan{
+    margin-right: 1em;
+}
+
+span{
+    margin-bottom: 1em;
+    color: #9FA4B2;
+}
+
+span.bedspan, span.bathspan, span.locationspan{
+    color: #000;
+}
+span.price{
+    display: inline-block;
+    background: #60A5FA;
+    border-radius: .7em;
+    width: fit-content;
+    color: #fff;
+    padding: .2em .5em .2em .5em
+}
+
+
+a.cardbtn{
+    width: 100%;
+    padding: 0;
+    margin:0;
+    background: #3AB9A7;
+    color: #fff;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.singlecardbutton{
+    width: fit-content;
+    padding: .7em;
+    background: #3AB9A7;
+    border: none;
+    color: #fff;
+    border-radius: .5em;
+}
+
+div.parentcard{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 70%;
+    margin: 4em auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+div.parentcard section.photo img{
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+}
+
+span.type{
+    display: inline-block;
+    background: #F9BE24;
+    border-radius: .7em;
+    width: fit-content;
+    color: #fff;
+    margin-left: .5em;
+    padding: .2em .5em .2em .5em
+}
+
+section.pricetype{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+section.rooms{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+div.parentcard section.content{
+    padding: 2em;
+    display: flex;
+    flex-flow:column wrap;
+}
+
 body {
     padding-top: 5rem;
+    background: #F3F4F6;
+}
+
+span.price{
+    display: inline-block;
+    background: #60A5FA;
+    border-radius: .7em;
+    width: fit-content;
+    color: #fff;
+    padding: .2em .5em .2em .5em
 }

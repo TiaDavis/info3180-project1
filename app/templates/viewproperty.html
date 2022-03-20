@@ -13,14 +13,14 @@
         <h3>{{singleproperty.propertytitle}} </h3>
         <section class="pricetype"> 
             <span class="price"> {{local.currency(singleproperty.price, grouping= True)}} </span>
-            <span class="type">{{singleproperty.Type}}</span>
+            <span class="type">{{singleproperty.propertype}}</span>
         </section>
         <p>{{singleproperty.description}}</p>
         <section class="rooms">
             <span class="bedspan"><img class="bedimg" src="{{url_for('static', filename='images/bed.png')}}"/> {{singleproperty.numberofrooms}} {{bedlabel}} </span>
-            <span class="bathspan"><img class="bathimg" src="{{url_for('static', filename='images/bathroom.png')}}"/> {{singleproperty.numberofbathrooms}} {{bathlabel}}</span>
+            <span class="bathspan"><img class="bathimg" src="{{url_for('static', filename='images/shower.png')}}"/> {{singleproperty.numberofbathrooms}} {{bathlabel}}</span>
         </section>
-        <span class="locationspan"><img class="locationimg" src="{{url_for('static', filename='images/location.png')}}"/> {{singleproperty.location}} </span>
+        <span class="locationspan"><img class="locationimg" src="{{url_for('static', filename='images/R.jpg')}}"/> {{singleproperty.location}} </span>
         <button class="singlecardbutton"> Email Realtor</button>
     </section>
  </div>

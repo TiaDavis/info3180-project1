@@ -43,7 +43,7 @@ def flash_errors(form):
 
 @app.route('/uploads/<filename>')
 def get_image(filename):
-    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
@@ -93,7 +93,7 @@ def displayproperty(propertyid):
     else:
         bathroomlabel ='Bathroom'
     
-    return render_template('property.html', singleproperty = newproperty, bathlabel = bathroomlabel, bedlabel = bedroomlabel, loc=locale)
+    return render_template('viewproperty.html', singleproperty = newproperty, bathlabel = bathroomlabel, bedlabel = bedroomlabel, local=locale)
 
 @app.after_request
 def add_header(response):

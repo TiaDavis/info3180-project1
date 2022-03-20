@@ -7,11 +7,11 @@
 <h2>Properties </h2>
 <section id="propertyset"> 
     {% for property in proplst: %}
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src='{{ url_for("get_image", filename=property.photo)}}' alt="Property image"/>
+    <div class="card">
+      <img class = "card-img-top" src="{{url_for('static', filename = 'images/'+ property.photo)}}" alt="Property Image">
         <div class="card-body"> 
           <h5 class="card-title">{{property.propertytitle}}</h5>
-         <span><img class="locationimg" src="{{url_for('static', filename='images/location.png')}}"/> {{property.location}} </span>
+         <span><img class="locationimg" src="{{url_for('static', filename = 'images/R.jpg')}}"/> {{property.location}} </span>
          <span class="price"> {{local.currency(property.price, grouping= True)}} </span>
         </div>
         <a href="{{url_for('displayproperty', propertyid = property.id)}}" class="cardbtn"> View Property </a>
