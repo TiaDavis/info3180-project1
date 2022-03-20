@@ -73,6 +73,7 @@ def addproperty():
 def displayproperties():
     if request.method == 'GET':
         propertylst = Property.query.all()
+        print(propertylst)
         return render_template('properties.html', proplst = propertylst, local = locale)
     
 @app.route('/properties/<propertyid>')
